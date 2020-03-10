@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<c3p0-config>
+  <default-config>
+    <!-- 数据库驱动 -->
+    <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+    <!-- 数据库连接url -->
+    <property name="jdbcUrl">jdbc:mysql://localhost:3306/test01_db?useSSL=false&amp;serverTimezone=Asia/Shanghai</property>
+    <!-- 数据库连接用户名 -->
+    <property name="user">root</property>
+    <!-- 数据库连接密码 -->
+    <property name="password">admin123</property>
+  </default-config>
+
+  <!-- This app is massive! -->
+  <named-config name="intergalactoApp">
+  </named-config>
+</c3p0-config>
