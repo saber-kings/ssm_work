@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="userMapper">
+    <!--根据编号查询用户-->
+    <select id="queryUserById" parameterType="java.lang.Long" resultType="com.qst.domain.User">
+        SELECT *, user_name AS userName FROM lzf WHERE id=#{id}
+    </select>
+    <!--查询所有用户-->
+    <select id="queryUserList" resultType="com.qst.domain.User">
+        SELECT *, user_name AS userName FROM lzf
+    </select>
+    <!--添加用户-->
+    <insert id="insertUser" parameterType="com.qst.domain.User">
+        INSERT INTO lzf (id,user_name,password,name,age,sex,birthday,created,updated)
+         VALUES (NULL,#{userName},#{password},#{name},#{age},#{sex},#{birthday},#{created},#{updated})
+    </insert>
+    <!--修改用户-->
+    <update id="updateUser" parameterType="com.qst.domain.User">
+        UPDATE lzf SET
+        user_name = #{userName},password = #{password}, name = #{name},age = #{age},sex = #{sex},
+        birthday = #{birthday},created = #{created},updated = #{updated}
+        WHERE id = #{id}
+    </update>
+    <!--根据编号删除用户-->
+    <delete id="deleteById" parameterType="java.lang.Long">
+        DELETE FROM lzf WHERE id = #{id}
+    </delete>
+</mapper>
