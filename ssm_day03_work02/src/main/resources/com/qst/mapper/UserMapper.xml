@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qst.mapper.UserMapper">
+    <resultMap id="userResult" type="com.qst.domain.User">
+        <id property="id" column="id"/>
+        <result property="userName" column="user_name"/>
+    </resultMap>
     <!--根据编号查询用户-->
-    <select id="queryById" parameterType="java.lang.Long" resultType="com.qst.domain.User">
-        SELECT *, user_name AS userName FROM lzf WHERE id = #{id}
+    <select id="queryById" parameterType="java.lang.Long" resultType="User">
+        SELECT *
+        FROM lzf
+        WHERE id = #{id}
     </select>
     <!--查询所有用户-->
-    <select id="findAll" resultType="com.qst.domain.User">
-        SELECT *, user_name AS userName FROM lzf
+    <select id="findAll" resultType="User">
+        SELECT *
+        FROM lzf
+    </select>
+    <!--根据id 删除用户-->
+    <delete id="deleteUser">
+        DELETE
+        FROM lzf
+        WHERE id = #{id}
+    </delete>
+    <!--根据用户名和密码查询-->
+    <select id="findUP" resultType="User">
+        SELECT *
+        FROM lzf
+        WHERE user_name = #{userName}
+          AND password = #{password}
+    </select>
+    <!--模糊查询-->
+    <select id="findByName" parameterType="string" resultType="User">
+        SELECT *
+        FROM lzf
+        WHERE name like '%${name}%'
     </select>
 </mapper>

@@ -48,4 +48,29 @@ public class UserMapperTest {
             System.out.println(user);
         }
     }
+
+    @Test
+    public void deleteUser() {
+        userMapper.deleteUser(3L);
+    }
+
+    @Test
+    public void findUP() {
+        User user = userMapper.findUP("Saber", "saber_king");
+        System.out.println(user);
+    }
+
+    @Test
+    public void findByName() {
+        List<User> userList = userMapper.findByName("吉");
+        for (User user : userList) {
+            System.out.println(user);
+        }
+    }
 }
+
+
+
+
+
+

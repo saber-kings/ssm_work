@@ -6,9 +6,16 @@
     <!--1.加载外部属性-->
     <properties resource="jdbc.properties"/>
     <!--开启驼峰标示-->
-    <!--<settings>
+    <settings>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings>-->
+    </settings>
+
+    <typeAliases>
+        <!--<typeAlias type="com.qst.domain.User" alias="User"/>-->
+        <!--指定包-->
+        <package name="com.qst.domain"/>
+    </typeAliases>
+
     <!--2.配置运行的环境-->
     <environments default="development">
         <environment id="development">
@@ -23,6 +30,9 @@
     </environments>
     <!--3.指定Mapper文件-->
     <mappers>
-        <mapper resource="com/qst/mapper/UserMapper.xml"/>
+        <!--<mapper resource="com/qst/mapper/UserMapper.xml"/>-->
+        <!--<mapper class="com.qst.mapper.UserMapper"/>-->
+        <!--<mapper url="file:///D:\IdeaProjects\SSM_Work\ssm_day03_work02\src\main\resources\com\qst\mapper\UserMapper.xml"/>-->
+        <package name="com.qst.mapper"/>
     </mappers>
 </configuration>

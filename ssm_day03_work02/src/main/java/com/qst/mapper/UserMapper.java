@@ -1,6 +1,7 @@
 package com.qst.mapper;
 
 import com.qst.domain.User;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -15,4 +16,10 @@ public interface UserMapper {
     User queryById(Long id);
     //查询所有用户
     List<User> findAll();
+    //根据id 删除用户
+    void deleteUser(Long id);
+    //根据用户名和密码查询
+    User findUP(@Param("userName") String userName, @Param("password") String password);
+    //模糊查询
+    List<User> findByName(@Param("name") String name);
 }
