@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzf.mapper.EmployeeMapper">
+    <resultMap id="empResult" type="Employee" autoMapping="true">
+        <!--1.配置雇员主键-->
+        <id property="empId" column="emp_id"/>
+        <!--2.关联工牌信息-->
+        <association property="workCard" javaType="WorkCard" autoMapping="true">
+            <!--2.1配置关联工牌主键-->
+            <id property="cardId" column="card_id"></id>
+        </association>
+    </resultMap>
+    <!--根据编号查询订单-->
+    <select id="queryEmp" resultMap="empResult">
+        SELECT e.*, w.*
+        FROM tb_employee e
+                 LEFT JOIN tb_work_card w ON e.card_id = w.card_id
+        WHERE e.emp_id = #{empId}
+    </select>
+</mapper>

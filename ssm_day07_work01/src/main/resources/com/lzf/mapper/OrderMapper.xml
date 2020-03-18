@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lzf.mapper.OrderMapper">
+    <resultMap id="orderResult" type="Order">
+        <id property="id" column="id"/>
+        <result property="orderNumber" column="order_no"/>
+        <result property="orderNumberName" column="order_name"/>
+    </resultMap>
+    <!--根据编号查询订单-->
+    <select id="selectOrder" resultMap="orderResult">
+        SELECT * FROM day07_work.`order` WHERE id = #{id}
+    </select>
+</mapper>
