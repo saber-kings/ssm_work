@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--构造器 注入-->
+    <bean id="dog01" class="com.lzf.domain.Dog">
+        <!-- 通过constructor-arg 注入构造器参数 -->
+        <!--
+            index 参数索引，第一个参数 0
+            name 参数名称
+            type 参数类型
+            value 注入简单类型值
+            ref 注入复杂对象引用
+         -->
+        <constructor-arg name="name" value="御坂美琴"/>
+        <constructor-arg name="age" value="15"/>
+    </bean>
+
+    <!--属性setter方法注入-->
+    <bean id="dog02" class="com.lzf.domain.Dog">
+        <property name="name" value="一方通行"/>
+        <property name="age" value="18"/>
+    </bean>
+
+    <!--为Dogs注入三个Dog-->
+    <bean id="dogs" class="com.lzf.domain.Dogs">
+        <property name="dogs">
+            <list>
+                <ref bean="dog01"/>
+                <ref bean="dog02"/>
+                <bean id="dog03" class="com.lzf.domain.Dog">
+                    <property name="name" value="垣根帝督"/>
+                    <property name="age" value="20"/>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+</beans>
