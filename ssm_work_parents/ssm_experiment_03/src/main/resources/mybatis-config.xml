@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--1 关联jdbc.propeties.文件-->
+    <properties resource="jdbc.properties"/>
+    <!--3 给domain里面类 起别名-->
+    <typeAliases>
+        <package name="com.lzf.domain"/>
+    </typeAliases>
+    <!--4 指定环境-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driverClassName}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--5 关联保存sql语句的mapper文件-->
+    <mappers>
+        <package name="com.lzf.mapper"/>
+    </mappers>
+
+</configuration>
