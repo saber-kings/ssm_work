@@ -1,10 +1,7 @@
 package com.lzf.aspect;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterReturning;
-import org.aspectj.lang.annotation.AfterThrowing;
-import org.aspectj.lang.annotation.Aspect;
-import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,22 +19,28 @@ import org.springframework.stereotype.Component;
 //标明这个类是切面类，里面包含了增强方法
 @Aspect
 public class MyAspectJ {
+
+    @Pointcut("bean(*Service)")
+    public void pointcut() {
+
+    }
+
     //前置通知
-    @Before("bean(*Service)")
+    @Before("pointcut()")
     public void before(JoinPoint joinPoint) {
         System.out.println("前置通知：开启事务... ....");
     }
 
     // 后置通知
-    @AfterReturning(value = "bean(*Service)", returning = "returnObject")
+    @AfterReturning(value = "pointcut()", returning = "returnObject")
     public void afterReturning(JoinPoint joinPoint, Object returnObject) {
-        System.out.println("后置通知：提交事务... ...");
+        System.out.println("后置通知：提交事务... ... returnObject=" + returnObject);
     }
 
     // 异常通知
-    @AfterThrowing(value = "bean(*Service)", throwing = "e")
+    @AfterThrowing(value = "pointcut()", throwing = "e")
     public void afterThrowing(JoinPoint joinPoint, Throwable e) {
-        System.out.println("异常通知：回滚事务... ...");
+        System.out.println("异常通知：回滚事务... ... e:" + e.getMessage());
     }
 
 }

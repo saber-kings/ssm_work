@@ -25,7 +25,7 @@ public class AccountService {
     }
 
     public void transfer(String outUser, String inUser, double money) {
-        accountDao.in(inUser, money);
         accountDao.out(outUser, money);
+        accountDao.in(inUser, money);
     }
 }
