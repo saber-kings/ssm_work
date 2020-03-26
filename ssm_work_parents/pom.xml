@@ -13,6 +13,7 @@
         <module>ssm_experiment_04</module>
         <module>ssm_examination_01</module>
         <module>ssm_examination_02</module>
+        <module>ssm_day12_work01</module>
     </modules>
 
     <!-- 集中定义依赖版本号 -->
@@ -125,6 +126,16 @@
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
 
             <!-- 连接池 -->
             <dependency>
@@ -149,7 +160,7 @@
 
             <!-- JSP相关 -->
             <dependency>
-                <groupId>javax.servlet.jsp.jstl</groupId>
+                <groupId>javax.servlet</groupId>
                 <artifactId>jstl</artifactId>
                 <version>${jstl.version}</version>
             </dependency>

@@ -1,0 +1,25 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <display-name>Archetype Created Web Application</display-name>
+    <servlet>
+        <servlet-name>servlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!--加载配置文件-->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:applicationContext.xml</param-value>
+        </init-param>
+        <!--1 表示服务器启动后立刻实例化(new)当前servlet;
+            0 表示第一次访问servlet才会被实例化(默认)-->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>servlet</servlet-name>
+        <!--*do: 扩展名匹配, 拦截 .do结尾的url-->
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+</web-app>
