@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+    <!--1 关联外部配置文件-->
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+    <!--2 连接池-->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!--3 sqlSessionFactory 关联数据库信息 和 mybatis的配置文件-->
+    <bean id="sessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <!--3.1 设置连接池属性-->
+        <property name="dataSource" ref="dataSource"/>
+        <!--3.2 给domain里面的类 起别名-->
+        <property name="typeAliasesPackage" value="com.lzf.domain"/>
+
+<!--        <property name="mapperLocations" value="classpath:mappers/*.xml"/>-->
+    </bean>
+    <!--4 自动扫描包内的mapper-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.lzf.mapper"/>
+    </bean>
+
+    <!--1.扫描业务包下的注解-->
+    <context:component-scan base-package="com.lzf.service.impl"/>
+    <!--2.开启事务注解-->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <tx:annotation-driven/>
+</beans>

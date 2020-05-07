@@ -14,6 +14,8 @@
         <module>ssm_examination_01</module>
         <module>ssm_examination_02</module>
         <module>ssm_day12_work01</module>
+        <module>springmvc_ssm</module>
+        <module>../crm</module>
     </modules>
 
     <!-- 集中定义依赖版本号 -->
@@ -55,6 +57,11 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-beans</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
@@ -191,7 +198,7 @@
                 <version>${commons-lang3.version}</version>
             </dependency>
             <dependency>
-                <groupId>org.apache.commons</groupId>
+                <groupId>commons-io</groupId>
                 <artifactId>commons-io</artifactId>
                 <version>${commons-io.version}</version>
             </dependency>
