@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration
-  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <!--1.加载外部属性-->
     <properties resource="jdbc.properties"/>
@@ -11,9 +11,9 @@
     </settings>-->
 
     <typeAliases>
-    <!--指定包-->
-    <package name="com.lzf.domain"/>
-</typeAliases>
+        <!--指定包-->
+        <package name="com.lzf.domain"/>
+    </typeAliases>
 
     <!--2.配置运行的环境-->
     <environments default="development">
